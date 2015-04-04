@@ -64,6 +64,9 @@ $tfNameL = $_POST['tfNameL'];
 $tfId = $_POST['tfId'];
 $cbMajors = unserialize($_POST['cbMajors']);
 
+# Get the day two days later
+$twoDaysLater = date("Y-m-d", strtotime("+2 days"));
+
 print("<input type='hidden' name='tfNameF' value='$tfNameF'>");
 print("<input type='hidden' name='tfNameL' value='$tfNameL'>");
 print("<input type='hidden' name='tfId' value='$tfId'>");
@@ -124,7 +127,8 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
         if($checkObj == $major) {
             print("Individual Advising: <input type='checkbox' style='height: 20px; width: 20px;' value='True' checked>"); 
 
-            print("<input type='date' name = 'dateApptI[]' required><br>");
+            # Minimum date on picker is now the date calculated in $twoDaysLater
+            print("<input type='date' min = '".$twoDaysLater."' name = 'dateApptI[]' required><br>");
             $count++;
         }
 
@@ -143,7 +147,8 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
 
             print("Group Advising: <input type='checkbox' style='height: 20px; width: 20px;' value='True' checked>"); 
 
-            print("<input type='date' name = 'dateApptG[]' required><br>");
+            # Again, minimum date is date calculated in $twoDaysLater
+            print("<input type='date' min = '".$twoDaysLater."' name = 'dateApptG[]' required><br>");
             $count++;
         }
     }
