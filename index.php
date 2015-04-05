@@ -44,11 +44,11 @@ h2 {
 	<!-- input fields fName, lName, StudentID -->
 	<font size="5" face="Serif">
 	<br>
-	FIRST NAME: <input type="text" size="12" maxlength="20" name="tfNameF" placeholder="John" required><br>
+	FIRST NAME: <input type="text" size="12" maxlength="20" name="tfNameF" placeholder="E.g. John" required><br>
 	<br>
-	LAST NAME: <input type="text" size="12" maxlength="20" name="tfNameL" placeholder="Smith" required><br>
+	LAST NAME: <input type="text" size="12" maxlength="20" name="tfNameL" placeholder="E.g. Smith" required><br>
 	<br>
-	CAMPUS ID: <input type="text" size="12" maxlength="8" name="tfId" placeholder="AB12345" required><br>
+	CAMPUS ID: <input type="text" size="12" maxlength="8" name="tfId" placeholder="E.g. AB12345" required><br>
 	</font>
 </h1>
 
