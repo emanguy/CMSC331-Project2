@@ -79,7 +79,7 @@ $debug = false;
 include('../phpCode/CommonMethods.php');
 $COMMON = new Common($debug); // common methods
 
-#prints out user's info
+# Prints out user's info
 print($tfNameF . " " . $tfNameL);
 print("<br>" . $tfId);
 print("<br><br><hr>");
@@ -105,11 +105,11 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
     $majorRow = getMajorRow($currChoice);
     $advisorField = $majorRow['Advisors'];
 
-    #breaks continuous string of names into individual name objects
+    # Breaks continuous string of names into individual name objects
     $advisorNames = explode(", ", $advisorField);
 
     print("<h1>");
-    #prints out all information about each advisor (Email, Position, Location)
+    # Prints out all information about each advisor (Email, Position, Location)
 
     $sql2 = "select * from `Advisor` where `Name` = '$name'";
     $rs2 = $COMMON-> executeQuery($sql2, $_SERVER["SCRIPT_NAME"]);
@@ -120,40 +120,43 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
 
     print("<h2>");
 
-    #Print out a date picker for individual advising if applicable
+    # Prints out a date picker for individual advising if applicable
     $count = 0;
-    foreach ($chkbIndividual as $checkObj) {
+    if ($chkbIndividual != NULL) {
+        foreach ($chkbIndividual as $checkObj) {
 
-        if($checkObj == $major) {
-            print("Individual Advising: <input type='checkbox' style='height: 20px; width: 20px;' value='True' checked>"); 
+            if($checkObj == $major) {
+                print("Individual Advising: <input type='checkbox' style='height: 20px; width: 20px;' value='True' checked>"); 
 
-            # Minimum date on picker is now the date calculated in $twoDaysLater
-            print("<input type='date' min = '".$twoDaysLater."' name = 'dateApptI[]' required><br>");
-            $count++;
+                # Minimum date on picker is now the date calculated in $twoDaysLater
+                print("<input type='date' min = '".$twoDaysLater."' name = 'dateApptI[]' required><br>");
+                $count++;
+            }
+
         }
-
-
     }
 
-    # no matches
+    # No matches
     if ($count == 0) {
         print("Individual Advising: <input type='checkbox' style='height: 20px; width: 20px;' value='True'><br>"); 
     }
 
     # Print out a date picker for group advising if applicable
     $count = 0;
-    foreach ($chkbGroup as $checkObj) {
-        if ($checkObj == $major) {
+    if ($chkbGroup != NULL) {
+        foreach ($chkbGroup as $checkObj) {
+            if ($checkObj == $major) {
 
-            print("Group Advising: <input type='checkbox' style='height: 20px; width: 20px;' value='True' checked>"); 
+                print("Group Advising: <input type='checkbox' style='height: 20px; width: 20px;' value='True' checked>"); 
 
-            # Again, minimum date is date calculated in $twoDaysLater
-            print("<input type='date' min = '".$twoDaysLater."' name = 'dateApptG[]' required><br>");
-            $count++;
+                # Again, minimum date is date calculated in $twoDaysLater
+                print("<input type='date' min = '".$twoDaysLater."' name = 'dateApptG[]' required><br>");
+                $count++;
+            }
         }
     }
 
-    # no matches
+    # No matches
     if ($count == 0) {
         print("Group Advising: <input type='checkbox' style='height: 20px; width: 20px;' value='True'><br>"); 
     }
