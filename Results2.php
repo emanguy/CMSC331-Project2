@@ -126,19 +126,14 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
         foreach ($chkbIndividual as $checkObj) {
 
             if($checkObj == $major) {
-                print("Individual Advising: <input type='checkbox' style='height: 20px; width: 20px;' value='True' checked>"); 
-
+                
                 # Minimum date on picker is now the date calculated in $twoDaysLater
-                print("<input type='date' min = '".$twoDaysLater."' name = 'dateApptI[]' required><br>");
+                print("Individual Advising: <input type='date' min = '".$twoDaysLater."' name = 'dateApptI[]' required><br>"); 
+
                 $count++;
             }
 
         }
-    }
-
-    # No matches
-    if ($count == 0) {
-        print("Individual Advising: <input type='checkbox' style='height: 20px; width: 20px;' value='True'><br>"); 
     }
 
     # Print out a date picker for group advising if applicable
@@ -147,18 +142,11 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
         foreach ($chkbGroup as $checkObj) {
             if ($checkObj == $major) {
 
-                print("Group Advising: <input type='checkbox' style='height: 20px; width: 20px;' value='True' checked>"); 
+                print("Group Advising: <input type='date' min = '".$twoDaysLater."' name = 'dateApptG[]' required><br>"); 
 
-                # Again, minimum date is date calculated in $twoDaysLater
-                print("<input type='date' min = '".$twoDaysLater."' name = 'dateApptG[]' required><br>");
                 $count++;
             }
         }
-    }
-
-    # No matches
-    if ($count == 0) {
-        print("Group Advising: <input type='checkbox' style='height: 20px; width: 20px;' value='True'><br>"); 
     }
 
     print("</div>");
