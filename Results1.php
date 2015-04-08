@@ -127,9 +127,13 @@ function enableDisable()
     for (var index = 0; index < atLeastOne.length; index++) 
     { 
         // If at least one required box is checked, disabled becomes false
-        // When it becomes false, it stays false
-        // Boolean logic, yo
-        disabled = disabled && !(atLeastOne[index].checked);
+        disabled = !(atLeastOne[index].checked);
+
+        // Break on first checked box
+        if (disabled == false)
+        {
+            break;
+        }
     } 
     
     // Disable the submit button based on results
@@ -142,7 +146,6 @@ var inputs = document.querySelectorAll("input[requiredAtLeastOne]");
 // Add an event listener to each which calls the enableDisable function
 for (var index = 0; index < inputs.length; index++) 
 { 
-    // Trust me, you need to do it this way
     inputs[index].addEventListener("click", function() { enableDisable(); });
 }
 </script>
