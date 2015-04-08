@@ -87,7 +87,7 @@ $arr = serialize($arraySelectedAdvisors);
 print("<input type='hidden' name='arraySelectedAdvisors' value='$arr'>");
 
 $debug = false; 
-include('../phpCode/CommonMethods.php');
+include('./CommonMethods.php');
 $COMMON = new Common($debug); // common methods
 
 #prints out user's info
