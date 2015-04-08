@@ -76,7 +76,7 @@ function printAdvisors($currChoice) {
 		print("<a href='mailto:$email'>$email</a><br>" . $row2['Position'] . "<br>"); 
 		$name = $row2['Name'];
 		$temp = $name . ", " . $currChoice;
-		print("Select: <input type='checkbox' name='arraySelectedAdvisors[]' style='height: 20px; width: 20px;' value='$temp'><br><br>"); 
+		print("Select: <input type='checkbox' name='arraySelectedAdvisors[]' style='height: 20px; width: 20px;' value='$temp' checked><br><br>"); 
 	}
 
 	#grabs from first query into Department Database and prints any additional info
