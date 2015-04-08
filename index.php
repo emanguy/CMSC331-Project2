@@ -60,7 +60,7 @@ h2 {
 <?php>
 
 	$debug = false; 
-	include('../phpCode/CommonMethods.php');
+	include('./CommonMethods.php');
 	$COMMON = new Common($debug); // common methods
 
 	$sql = "select * from `Department` order by `Name` ASC";

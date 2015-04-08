@@ -76,7 +76,7 @@ $chkbGroup = $_POST['chkbGroup'];
 $arraySelectedAdvisors = $_POST['arraySelectedAdvisors'];
 
 $debug = false; 
-include('../phpCode/CommonMethods.php');
+include('./CommonMethods.php');
 $COMMON = new Common($debug); // common methods
 
 # Prints out user's info
