@@ -80,7 +80,8 @@ $COMMON = new Common($debug); // common methods
 print($tfNameF . " " . $tfNameL);
 print("<br>" . $tfId);
 	print("<div class = 'showButton'>");
-		print("Show Appointments: <input type='submit' style='height: 5%; width: 25%;' value='GO'>"); 
+        # Disable until at least one of the "at least one required" checkboxes is checked
+		print("Show Appointments: <input type='submit' style='height: 5%; width: 25%;' value='GO' id='btnGo' disabled>"); 
 	print("</div>");
 print("<br><br><hr>");
 
@@ -99,8 +100,10 @@ for($majorNum = 0; $majorNum < count($cbMajors); $majorNum++) {
 	print("<h2>");
 
 	print("<div class = 'apptType'>");
-		print("Individual Advising: <input type='checkbox' style='height: 20px; width: 20px;' name='chkbIndividual[]' value='$selectedChoice'><br>"); 
-		print("Group Advising: <input type='checkbox' style='height: 20px; width: 20px;' name='chkbGroup[]' value='$selectedChoice'><br>"); 
+
+        # The requiredAtLeastOne attribute makes it easy for the javascript to access all the "at least one required" checkboxes
+		print("Individual Advising: <input type='checkbox' style='height: 20px; width: 20px;' name='chkbIndividual[]' value='$selectedChoice' requiredAtLeastOne><br>"); 
+		print("Group Advising: <input type='checkbox' style='height: 20px; width: 20px;' name='chkbGroup[]' value='$selectedChoice' requiredAtLeastOne><br>"); 
 	print("</div>");
 	print("</h2>");
 
@@ -108,6 +111,47 @@ for($majorNum = 0; $majorNum < count($cbMajors); $majorNum++) {
 	
 }
 
+?>
+
+<!-- Submit validator script -->
+<script type="text/javascript">
+
+// Create the function that enables and disables the submit button 
+function enableDisable() 
+{ 
+    // Initially set disabled to true
+    var disabled = true; 
+    // Get all "at least one required" elements
+    var atLeastOne = document.querySelectorAll("input[requiredAtLeastOne]"); 
+    
+    for (var index = 0; index < atLeastOne.length; index++) 
+    { 
+        // If at least one required box is checked, disabled becomes false
+        disabled = !(atLeastOne[index].checked);
+
+        // Break on first checked box
+        if (disabled == false)
+        {
+            break;
+        }
+    } 
+    
+    // Disable the submit button based on results
+    document.getElementById("btnGo").disabled = disabled; 
+}
+
+// Get all the checkboxes on the page
+var inputs = document.querySelectorAll("input[requiredAtLeastOne]");
+
+// Add an event listener to each which calls the enableDisable function
+for (var index = 0; index < inputs.length; index++) 
+{ 
+    inputs[index].addEventListener("click", function() { enableDisable(); });
+}
+</script>
+
+<?php
 include("tailHTML.html");
 
 ?>
+
