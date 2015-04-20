@@ -151,14 +151,16 @@ $printables = array(
 
 		print("<h2>");
 		$date = "2015";
+	if ($chkbIndividual != NULL)
+	{
 		foreach ($chkbIndividual as $checkObj) {
 
 			if($checkObj == $major) {
 				print("Individual Appointment: ");
-				
+
 				$sql = "select * from `Appointment` where `Advisor Name` = '$name' and `isGroup` = '0' and `Time` LIKE '$date%' ORDER BY `Time` ASC";
 				$rs = $COMMON-> executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-				
+
 				$dbTimes;				
 
 				$counter = 0;
@@ -192,12 +194,15 @@ $printables = array(
 			#resets blacklistings		
 			$dbTimes = array(); 
 		}
+	}
 
 
+	if ($chkbGroup != NULL)
+	{ 
 		foreach ($chkbGroup as $checkObj) {
 			if($checkObj == $major) {
 				print("Group Appointment:"); 
-				
+
 				$sql = "select * from `Appointment` where `isGroup` = '1' and `Major` = '$major' and `Time` LIKE '$date%'";
 				$rs = $COMMON-> executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
@@ -230,6 +235,7 @@ $printables = array(
 			print("</select>");	
 			$dbTimes = array(); 
 		}
+	}
 	}
 	print("</div>");
 	print("</h2>");
