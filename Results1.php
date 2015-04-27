@@ -101,9 +101,9 @@ for($majorNum = 0; $majorNum < count($cbMajors); $majorNum++) {
 
 	print("<div class = 'apptType'>");
 
-        # The requiredAtLeastOne-grouping attribute makes it easy for the javascript to access all the "at least one required" checkboxes
-		print("Individual Advising: <input type='checkbox' style='height: 20px; width: 20px;' name='chkbIndividual[]' value='$selectedChoice' requiredAtLeastOne-grouping><br>"); 
-		print("Group Advising: <input type='checkbox' style='height: 20px; width: 20px;' name='chkbGroup[]' value='$selectedChoice' requiredAtLeastOne-grouping><br>"); 
+        # The requiredAtLeastOne-apptType attribute makes it easy for the javascript to access all the "at least one required" checkboxes
+		print("Individual Advising: <input type='checkbox' style='height: 20px; width: 20px;' name='chkbIndividual[]' value='$selectedChoice' requiredAtLeastOne-apptType><br>"); 
+		print("Group Advising: <input type='checkbox' style='height: 20px; width: 20px;' name='chkbGroup[]' value='$selectedChoice' requiredAtLeastOne-apptType><br>"); 
 	print("</div>");
 	print("</h2>");
 
@@ -120,7 +120,7 @@ for($majorNum = 0; $majorNum < count($cbMajors); $majorNum++) {
 function enableDisable() 
 { 
     // Get all "at least one required" elements
-    var atLeastOne = document.querySelectorAll("input[requiredAtLeastOne-grouping]");
+    var atLeastOne = document.querySelectorAll("input[requiredAtLeastOne-apptType]");
     var advAtLeastOne = document.querySelectorAll("input[requiredAtLeastOne-advisor]");
 
     // Make separate booleans for grouping and advisor checkboxes
@@ -141,10 +141,10 @@ function enableDisable()
     } 
     
     // Loop through the individual advisor checkboxes
-    for (var index = 0; index < atLeastOne.length; index++) 
+    for (var index = 0; index < advAtLeastOne.length; index++) 
     { 
         // If at least one required box is checked, disabled becomes false
-        advisorNotChecked = !(atLeastOne[index].checked);
+        advisorNotChecked = !(advAtLeastOne[index].checked);
 
         // Break on first checked box
         if (advisorNotChecked == false)

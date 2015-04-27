@@ -150,7 +150,8 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
 	print("<a href='mailto:$email'>$email</a><br>" . $row2['Position'] . "<br>"); 
 
 	print("<h2>");
-	$date = "2015";
+    # Get the current year
+	$date = date("Y");
 	if ($chkbIndividual != NULL)
 	{
 	# Loop through all checked checkboxes
