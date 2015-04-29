@@ -32,7 +32,7 @@ $DB = new Common(false);
 $query = "SELECT `ID`,`Advisor Name`, `Time` FROM `Appointment` WHERE `StudentID` LIKE '".$studentID."' AND `isGroup` = 0 AND `Time` >= '".$date."'";
 $normalAppointments = $DB->executeQuery($query, $_SERVER["SCRIPT_NAME"]);
 
-$query = "SELECT `appointmentID` FROM `Appointment` WHERE `StudentID` LIKE '".$studentID."' AND `isGroup` = 1 AND `Time` >= '".$date."'";
+$query = "SELECT `ID`, `appointmentID` FROM `Appointment` WHERE `StudentID` LIKE '".$studentID."' AND `isGroup` = 1 AND `Time` >= '".$date."'";
 $groupAppointmentIds = $DB->executeQuery($query, $_SERVER["SCRIPT_NAME"]);
 
 $groupAppointments = array();
@@ -41,7 +41,12 @@ while ($idRow = MYSQL_FETCH_ARRAY($groupAppointmentIds))
 {
     // Grab the group appointment based on its id
     $query = "SELECT `ID`,`Date/Time`, `Advisors` FROM `GroupAppointments` WHERE `ID` = ".$idRow["appointmentID"];
-    array_push($groupAppointments, $DB->executeQuery($query, $_SERVER["SCRIPT_NAME"]));
+    $resultArr = $DB->executeQuery($query, $_SERVER["SCRIPT_NAME"];
+
+    // Add the original event's ID to the array
+    $resultArr["signupID"] = $idRow["appointmentID"];
+
+    array_push($groupAppointments, $resultArr));
 }
 
 // Display error message if no appointments were fetched
@@ -107,7 +112,8 @@ else
                 <td>
                     <form action='DeleteAppointment.php' method='post' deleteAction>
                         <img src='DeleteIcon.svg' width='50' height='50' />
-                        <input name='eventId' type='hidden' value='".$appointment["ID"]."'>
+                        <input name='eventId' type='hidden' value='".$appointment["signupID"]."'>
+                        <input name='groupId' type='hidden' value='".$appointment["ID"]."'>
                         <input name='isGroup' type='hidden' value='true'>
                         <input name='studentID' type='hidden' value='".$studentID."'>
                     </form>
