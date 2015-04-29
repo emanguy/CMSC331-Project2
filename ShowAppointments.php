@@ -76,6 +76,7 @@ else
                         <img src='DeleteIcon.svg' width='50' height='50' />
                         <input name='eventId' type='hidden' value='".$appointment["ID"]."'>
                         <input name='isGroup' value='false'>
+                        <input name='studentID' type='hidden' value='".$studentID."'>
                     </form>
                 </td>
             </tr>");
@@ -108,6 +109,7 @@ else
                         <img src='DeleteIcon.svg' width='50' height='50' />
                         <input name='eventId' type='hidden' value='".$appointment["ID"]."'>
                         <input name='isGroup' type='hidden' value='true'>
+                        <input name='studentID' type='hidden' value='".$studentID."'>
                     </form>
                 </td>
             </tr>");
