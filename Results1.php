@@ -101,9 +101,9 @@ for($majorNum = 0; $majorNum < count($cbMajors); $majorNum++) {
 
 	print("<div class = 'apptType'>");
 
-        # The requiredAtLeastOne attribute makes it easy for the javascript to access all the "at least one required" checkboxes
-		print("Individual Advising: <input type='checkbox' style='height: 20px; width: 20px;' name='chkbIndividual[]' value='$selectedChoice' requiredAtLeastOne><br>"); 
-		print("Group Advising: <input type='checkbox' style='height: 20px; width: 20px;' name='chkbGroup[]' value='$selectedChoice' requiredAtLeastOne><br>"); 
+        # The requiredAtLeastOne-apptType attribute makes it easy for the javascript to access all the "at least one required" checkboxes
+		print("Individual Advising: <input type='checkbox' style='height: 20px; width: 20px;' name='chkbIndividual[]' value='$selectedChoice' requiredAtLeastOne-apptType><br>"); 
+		print("Group Advising: <input type='checkbox' style='height: 20px; width: 20px;' name='chkbGroup[]' value='$selectedChoice' requiredAtLeastOne-apptType><br>"); 
 	print("</div>");
 	print("</h2>");
 
@@ -119,29 +119,46 @@ for($majorNum = 0; $majorNum < count($cbMajors); $majorNum++) {
 // Create the function that enables and disables the submit button 
 function enableDisable() 
 { 
-    // Initially set disabled to true
-    var disabled = true; 
     // Get all "at least one required" elements
-    var atLeastOne = document.querySelectorAll("input[requiredAtLeastOne]"); 
+    var atLeastOne = document.querySelectorAll("input[requiredAtLeastOne-apptType]");
+    var advAtLeastOne = document.querySelectorAll("input[requiredAtLeastOne-advisor]");
+
+    // Make separate booleans for grouping and advisor checkboxes
+    var groupingNotChecked;
+    var advisorNotChecked;
     
+    // Loop through the group/individual appointment checkboxes
     for (var index = 0; index < atLeastOne.length; index++) 
     { 
         // If at least one required box is checked, disabled becomes false
-        disabled = !(atLeastOne[index].checked);
+        groupingNotChecked = !(atLeastOne[index].checked);
 
         // Break on first checked box
-        if (disabled == false)
+        if (groupingNotChecked == false)
         {
             break;
         }
     } 
     
+    // Loop through the individual advisor checkboxes
+    for (var index = 0; index < advAtLeastOne.length; index++) 
+    { 
+        // If at least one required box is checked, disabled becomes false
+        advisorNotChecked = !(advAtLeastOne[index].checked);
+
+        // Break on first checked box
+        if (advisorNotChecked == false)
+        {
+            break;
+        }
+    } 
+
     // Disable the submit button based on results
-    document.getElementById("btnGo").disabled = disabled; 
+    document.getElementById("btnGo").disabled = groupingNotChecked || advisorNotChecked; 
 }
 
 // Get all the checkboxes on the page
-var inputs = document.querySelectorAll("input[requiredAtLeastOne]");
+var inputs = document.querySelectorAll("input[type=checkbox]");
 
 // Add an event listener to each which calls the enableDisable function
 for (var index = 0; index < inputs.length; index++) 

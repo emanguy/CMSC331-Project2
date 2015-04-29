@@ -126,7 +126,7 @@ $printables = array(
 	12 => "03:00 PM", 
 	13 => "03:30 PM");
 
-	for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
+for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
 
 	$selected = explode(", ", $arraySelectedAdvisors[$num]);
 
@@ -149,12 +149,15 @@ $printables = array(
 	$email = $row2['Email'];
 	print("<a href='mailto:$email'>$email</a><br>" . $row2['Position'] . "<br>"); 
 
-		print("<h2>");
-		$date = "2015";
+	print("<h2>");
+    # Get the current year
+	$date = date("Y");
 	if ($chkbIndividual != NULL)
 	{
+	# Loop through all checked checkboxes
 		foreach ($chkbIndividual as $checkObj) {
 
+	# If the checkbox is equal to the specified major
 			if($checkObj == $major) {
 				print("Individual Appointment: ");
 
@@ -236,7 +239,7 @@ $printables = array(
 			$dbTimes = array(); 
 		}
 	}
-	}
+}
 	print("</div>");
 	print("</h2>");
 	print("<div class = 'button'>");
