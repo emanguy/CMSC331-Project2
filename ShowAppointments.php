@@ -41,7 +41,7 @@ while ($idRow = MYSQL_FETCH_ARRAY($groupAppointmentIds))
 {
     // Grab the group appointment based on its id
     $query = "SELECT `ID`,`Date/Time`, `Advisors` FROM `GroupAppointments` WHERE `ID` = ".$idRow["appointmentID"];
-    $resultArr = $DB->executeQuery($query, $_SERVER["SCRIPT_NAME"];
+    $resultArr = MYSQL_FETCH_ARRAY($DB->executeQuery($query, $_SERVER["SCRIPT_NAME"]);
 
     // Add the original event's ID to the array
     $resultArr["signupID"] = $idRow["appointmentID"];
@@ -69,7 +69,7 @@ else
                </th>");
 
         // Every table row is just the data gathered from the query
-        foreach ($normalAppointments as $appointment)
+        while ($appointment = MYSQL_FETCH_ARRAY($normalAppointments))
         {
             $formattedTime = date("mm/DD hh:MM meridian", strtotime($appointment["Time"]);
 
