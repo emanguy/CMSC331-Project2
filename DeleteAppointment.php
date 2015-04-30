@@ -22,7 +22,6 @@ $groupId = "";
 $isGroup = $_POST["isGroup"];
 $studentID = $_POST["studentID"];
 
-// Set groupId if it was passed
 if (isset($_POST["groupId"]))
 {
     $groupId = $_POST["groupId"];
@@ -36,7 +35,7 @@ $query = "DELETE FROM `Appointment` WHERE `ID` = ".$eventId." AND `isGroup` = ".
 $DB->executeQuery($query, $_SERVER["SCRIPT_NAME"]);
 
 // Rebuild list of students in the group appointment if applicable
-if ($isGroup)
+if ($isGroup === 'true')
 {
     // Get names of all students attending group appointment
     $query = "SELECT `Student Name` FROM `Appointment` WHERE `appointmentID` = ".$groupId." AND
@@ -55,7 +54,8 @@ if ($isGroup)
     $nameString = implode(", ", $nameArray);
 
     // Update group appointment
-    $query = "UPDATE `GroupAppointments` SET `Signups`='".$nameString."' WHERE ID = ".$groupId;
+    $query = "UPDATE `GroupAppointments` SET `Signups`='".$nameString."' WHERE `ID` = ".$groupId;
+    $DB->executeQuery($query, $_SERVER["SCRIPT_NAME"]);
 }
 
 /* 
@@ -63,7 +63,7 @@ if ($isGroup)
  * to your appointment list.
  */
 print("<h1>The appointment was successfully deleted. Press the button below to return to your list of appointments.</h1>");
-print("<form action='DeleteAppointmentBegin.php' method='POST'>
+print("<form action='ShowAppointments.php' method='POST'>
         <input type='submit' value='Return to Appointment List'>
         <input type='hidden' name='tfId' value='".$studentID."'>
     </form>");
