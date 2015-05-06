@@ -105,9 +105,11 @@ for ($i = 1; $i < count($cbMajors); $i++)
 		$advisorNames = $advisorNames . " OR `Majors` LIKE '%$cbMajors[$i]%'";
 }
 
+$advisorNames = $advisorNames . " ORDER BY `Majors` ASC, `Name` ASC";
+
 $rs = $COMMON-> executeQuery($advisorNames, $_SERVER["SCRIPT_NAME"]);
-while ($row = mysql_fetch_array($rs)) {
-	
+while ($row = mysql_fetch_array($rs)) 
+{
 	printAdvisors($row['Name']);
 }
 
