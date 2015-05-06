@@ -35,8 +35,8 @@ h3 {
 
 #####################################################################
 #
-# This file handles getting the schedules for the selected advisors
-# or majors
+# This file handles selecting appointment dates to be queried to the
+# database in the next page, Results3.php
 #
 #####################################################################
 
@@ -107,15 +107,16 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
 
 	# Prints out a date picker for individual advising if applicable
 	if ($chkbIndividual != NULL) {
-                
-            # Minimum date on picker is now the date calculated in $twoDaysLater
-            print("Individual Advising: <input type='date' min = '".$twoDaysLater."' name = 'dateApptI[]' required><br>"); 
+    	# Minimum date on picker is now the date calculated in $twoDaysLater and the default date
+
+        print("Individual Advising: <input type='date' min = '$twoDaysLater' name = 'dateApptI[]' value = '$twoDaysLater' required><br>"); 
 	}
 
 	# Print out a date picker for group advising if applicable
 	if ($chkbGroup != NULL) {
+    	# Minimum date on picker is now the date calculated in $twoDaysLater and the default date
 
-            	print("Group Advising: <input type='date' min = '".$twoDaysLater."' name = 'dateApptG[]' required><br>"); 
+		print("Group Advising: <input type='date' min = '$twoDaysLater' name = 'dateApptG[]' value = '$twoDaysLater' required><br>"); 
     }
 
 	print("</h2>");
@@ -125,6 +126,7 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
 print("<div class = 'button'>");
 print("<input type='submit' value='SELECT APPOINTMENTS'>"); 
 print("</div>");
+
 include("tailHTML.html");
 
 ?>
