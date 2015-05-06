@@ -5,31 +5,26 @@
 h1 {
     color: black;
     text-align: left;
-    font-size: 16px;
+    font-size: 1em;
 }
 
 h2 {
     color: black;
     text-align: center;
-    font-size: 16px;
+    font-size: 1em;
     right: 0%;
 }
 
 h3 {
     color: black;
-    font-size: 12px;
+    font-size: 1em;
     text-align: right;
-}
-
-.right {
-    float: right;
-    width: 300px;
 }
 
 .showButton {
 	float: center;
-	font-size: 24px;
-	width: 20%;
+	font-size: 1.5em;
+	width: 25%;
 	heigth: 50%;
 	position: relative;
 	right: -40%;
@@ -65,7 +60,7 @@ $tfNameL = $_POST['tfNameL'];
 $tfId = $_POST['tfId'];
 $cbMajors = $_POST['cbMajors'];
 
-#these are used for the showing of individual appointment availabilities
+# These are used for the showing of individual appointment availabilities
 $selectedAdvisorList;
 $booleanList;
 
@@ -76,39 +71,46 @@ $debug = false;
 include('./CommonMethods.php');
 $COMMON = new Common($debug); // common methods
 
-#prints out user's info
+# Prints out user's info
 print($tfNameF . " " . $tfNameL);
 print("<br>" . $tfId);
 	print("<div class = 'showButton'>");
         # Disable until at least one of the "at least one required" checkboxes is checked
+
 		print("Show Appointments: <input type='submit' style='height: 5%; width: 25%;' value='GO' id='btnGo' disabled>"); 
 	print("</div>");
 print("<br><br><hr>");
 
+print("<h2>");
+print("<div class = 'apptType'>");
+       	# The requiredAtLeastOne attribute makes it easy for the javascript to access all the "at least one required" checkboxes
+	print("Individual Advising: <input type='checkbox' style='height: 20px; width: 20px;' name='chkbIndividual' requiredAtLeastOne-apptType><br>"); 
+	print("Group Advising: <input type='checkbox' style='height: 20px; width: 20px;' name='chkbGroup' requiredAtLeastOne-apptType><br>"); 
+print("</div>");
+print("</h2>");
+
 print("<input type='hidden' name='tfNameF' value='$tfNameF'>");
 print("<input type='hidden' name='tfNameL' value='$tfNameL'>");
 print("<input type='hidden' name='tfId' value='$tfId'>");
+
 $arr = serialize($cbMajors);
 print("<input type='hidden' name='cbMajors' value='$arr'>");
 
-for($majorNum = 0; $majorNum < count($cbMajors); $majorNum++) {
+# Set up first part of query with first major choice
+$advisorNames = "SELECT * FROM `Advisor` WHERE `Majors` LIKE '%$cbMajors[0]%'";
 
-	$selectedChoice = $cbMajors[$majorNum];
+# Add additional major choices after the first one
+for ($i = 1; $i < count($cbMajors); $i++)
+{
+		$advisorNames = $advisorNames . " OR `Majors` LIKE '%$cbMajors[$i]%'";
+}
 
-	createReservedSpace($selectedChoice);
-	
-	print("<h2>");
+$advisorNames = $advisorNames . " ORDER BY `Majors` ASC, `Name` ASC";
 
-	print("<div class = 'apptType'>");
-
-        # The requiredAtLeastOne-apptType attribute makes it easy for the javascript to access all the "at least one required" checkboxes
-		print("Individual Advising: <input type='checkbox' style='height: 20px; width: 20px;' name='chkbIndividual[]' value='$selectedChoice' requiredAtLeastOne-apptType><br>"); 
-		print("Group Advising: <input type='checkbox' style='height: 20px; width: 20px;' name='chkbGroup[]' value='$selectedChoice' requiredAtLeastOne-apptType><br>"); 
-	print("</div>");
-	print("</h2>");
-
-	printAdvisors($selectedChoice);
-	
+$rs = $COMMON-> executeQuery($advisorNames, $_SERVER["SCRIPT_NAME"]);
+while ($row = mysql_fetch_array($rs)) 
+{
+	printAdvisors($row['Name']);
 }
 
 ?>
