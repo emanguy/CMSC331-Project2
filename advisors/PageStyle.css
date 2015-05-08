@@ -1,0 +1,27 @@
+
+body {
+    background-color: #F5CA5C
+}
+
+.centerBox {
+    float: center;
+    position: relative;
+    right: -25%;
+    background-color: #ffffff;
+    width: 50%;
+    padding: 8px;
+} 
+
+h1 {
+    text-align: right;
+    float: center;
+    position: relative;
+    right: 35%;
+}
+
+.errorText
+{
+    color: red;
+    font-style: italic;
+    font-weight: bold;
+}

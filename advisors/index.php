@@ -3,34 +3,15 @@
         <title>Advisor Login</title>
     </head>
     <body>
+        <!-- Import typical page styles -->
+        <link rel="stylesheet" href="PageStyle.css" type="text/css">
         <!-- Copy of CSS code from other index.php for consistency -->
         <style>
-
-            body {
-                background-color: #F5CA5C
-            }
-
-            .nameEntryBox {
-                float: center;
-                position: relative;
-                right: -25%;
-                background-color: #ffffff;
-                width: 50%;
-                padding: 8px;
-            } 
-
             h1 {
                 text-align: right;
                 float: center;
                 position: relative;
                 right: 35%;
-            }
-
-            .errorText
-            {
-                color: red;
-                font-style: italic;
-                font-weight: bold;
             }
         </style>
 
@@ -42,13 +23,13 @@
         </center>
 
         <!-- Begin form -->
-        <form action="VerifyLogin.php" method="post">
+        <form action="AttemptLogin.php" method="post">
             <!-- Begin student ID box -->
-            <div class="nameEntryBox">
+            <div class="centerBox">
                 <!-- Align content correctly -->
                 <h1>
                     <!-- Input for student's user ID -->
-                    Advisor ID: <input type="text" size="12" maxLength="4" name="advId"
+                    Advisor ID: <input type="text" size="12" maxLength="4" name="advID"
                         placeholder="E.g. 1" required><br>
                 </h1>
 
