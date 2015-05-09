@@ -1,8 +1,10 @@
 
+/* This CSS styles the page's background to be UMBC gold */
 body {
     background-color: #F5CA5C
 }
 
+/* This CSS class can style an element to become a centered box with a white background */
 .centerBox {
     float: center;
     position: relative;
@@ -12,6 +14,7 @@ body {
     padding: 8px;
 } 
 
+/* This CSS styles all H1 tags to be centered and large */
 h1 {
     text-align: right;
     float: center;
@@ -19,9 +22,36 @@ h1 {
     right: 35%;
 }
 
+/* This CSS class styles an element to have red text that is italicized and bold. */
 .errorText
 {
     color: red;
     font-style: italic;
     font-weight: bold;
+}
+
+/* This CSS styles a submit button in a form to look like a link */
+input[type="submit"].submitLink
+{
+    border: 0px;
+    background-color: rgba(0,0,0,0);
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: monospace;
+}
+
+/* This CSS styles the look of the nav bar box itself */
+div#navigationBar
+{
+    background-color: #FFFFFF;
+    height: 3%;
+    padding: 10px;
+}
+
+/* This CSS adds margins to everything inside the nav bar */
+div#navigationBar > *
+{
+    display: inline;
+    margin-right: 32px;
 }

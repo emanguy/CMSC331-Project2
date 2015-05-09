@@ -2,9 +2,6 @@
 <head>
     <title>Advisor Control Panel </title>
 
-    <!-- Import common styles -->
-    <link rel="stylesheet" href="PageStyle.css" type="text/css">
-
     <!-- Page-specific styles -->
     <style type="text/css">
         form
@@ -16,6 +13,9 @@
 </head>
 
 <body>
+    <!-- "Special" link bar which passes POST data on link clicks -->
+    <?php include("LinkBar.php") ?>
+
     <!-- Paw print logo -->
     <img height="10%" src="http://assets1-my.umbc.edu/images/avatars/myumbc/original.png?1425393485"></img><br>
 
@@ -26,8 +26,18 @@
                     // Get advisor ID from POST
                     $advisorID = $_POST["advID"];
 
+                    /*
+                     * This statement fixes an issue with my implementation on advisor validation.
+                     * When AttemptLogin.php includes this file, common already
+                     * exists and I get errors when I try to reinstantiate the class.
+                     */  
+                    if (!class_exists(Common))
+                    {
+                        include("CommonMethods.php");
+                    }
+
                     // Connect to DB
-                    // $DB = new Common(false);
+                    $DB = new Common(false);
                     $query = "SELECT `Name` FROM `Advisor` WHERE `ID` = ".$advisorID;
 
                     // Get the advisor's name

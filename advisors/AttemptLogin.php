@@ -1,4 +1,7 @@
 <?php
+/* 
+ * This php code handles login from index.php
+ */
 
 // Get advisor ID from POST
 $advisorID = $_POST["advID"];
