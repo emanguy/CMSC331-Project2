@@ -20,7 +20,7 @@
                 
             // Create a connection to the database
             include("CommonMethods.php");
-            $DB = new Common(true);
+            $DB = new Common(false);
 
             // Get advisor's name from DB
             $query = "SELECT `Name` FROM `Advisor` WHERE `ID` = '".$_POST["advID"]."'";
