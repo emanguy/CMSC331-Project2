@@ -1,0 +1,19 @@
+/* 
+ * Code in this CSS file makes your tables look good
+ */
+
+table, td, th
+{
+    border: 1px solid black;
+}
+
+table
+{
+    border-collapse: collapse;
+    background-color: white;
+}
+
+td, th
+{
+    padding: 5px;
+}
