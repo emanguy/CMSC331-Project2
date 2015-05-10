@@ -14,14 +14,6 @@ body {
     padding: 8px;
 } 
 
-/* This CSS styles all H1 tags to be centered and large */
-h1 {
-    text-align: right;
-    float: center;
-    position: relative;
-    right: 35%;
-}
-
 /* This CSS class styles an element to have red text that is italicized and bold. */
 .errorText
 {
