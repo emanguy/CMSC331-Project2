@@ -1,5 +1,5 @@
 <?php
-    include("headHTML.html");
+    include("headHTML.php");
 ?>
 
 <!-- CSS Styles -->
