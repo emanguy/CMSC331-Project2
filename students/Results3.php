@@ -58,15 +58,11 @@ h3 {
 include("headHTML.php");
 include("Utilities.php");
 
-<<<<<<< HEAD
-$chkbIndividual = $_POST['chkbIndividual'];
-$chkbGroup = $_POST['chkbGroup'];
-=======
+
 print("<form action='Final.php' method='post' name='SendApptType'>");
 
-$chkbIndividual = unserialize($_POST['chkbIndividual']);
-$chkbGroup = unserialize($_POST['chkbGroup']);
->>>>>>> master
+$chkbIndividual = $_POST['chkbIndividual'];
+$chkbGroup = $_POST['chkbGroup'];
 $arraySelectedAdvisors = unserialize($_POST['arraySelectedAdvisors']);
 
 $dateApptI = $_POST['dateApptI'];
