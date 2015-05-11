@@ -15,6 +15,7 @@ div.toolbar > *
 {
     display: inline;
     margin-left: 32px;
+    font-family: monospace;
 }
 
 /* This CSS styles a submit button in a form to look like a link */
