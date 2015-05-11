@@ -73,7 +73,7 @@ $dateApptI = unserialize($_POST['dateApptI']);
 $dateApptG = unserialize($_POST['dateApptG']);
 
 $debug = false; 
-include('../phpCode/CommonMethods.php');
+include('../CommonMethods.php');
 $COMMON = new Common($debug); // common methods
 
 #prints out user's info
