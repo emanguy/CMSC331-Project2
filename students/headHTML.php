@@ -9,6 +9,7 @@ body {
 	background-color: white;
 	width: 100%;
 	height: 6%;
+	padding-top: 20px;
 }
 
 div.toolbar > *
