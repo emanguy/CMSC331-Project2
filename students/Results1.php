@@ -52,7 +52,7 @@ h3 {
 
 print("<form action='Results2.php' method='post' name='SendApptType'>");
 
-include("headHTML.html");
+include("headHTML.php");
 include("Utilities.php");
 
 $tfNameF = $_POST['tfNameF'];

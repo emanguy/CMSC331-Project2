@@ -56,7 +56,7 @@ h3 {
 
 print("<form action='Final.php' method='post' name='SendApptType'>");
 
-include("headHTML.html");
+include("headHTML.php");
 include("Utilities.php");
 
 $chkbIndividual = unserialize($_POST['chkbIndividual']);

@@ -1,5 +1,5 @@
 <?php
-    include("headHTML.html");
+    include("headHTML.php");
 ?>
 
 <!-- Copy of CSS code from index.php for consistency -->
