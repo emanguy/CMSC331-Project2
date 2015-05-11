@@ -54,10 +54,11 @@ h3 {
 #
 #####################################################################
 
-print("<form action='Final.php' method='post' name='SendApptType'>");
 
 include("headHTML.php");
 include("Utilities.php");
+
+print("<form action='Final.php' method='post' name='SendApptType'>");
 
 $chkbIndividual = unserialize($_POST['chkbIndividual']);
 $chkbGroup = unserialize($_POST['chkbGroup']);

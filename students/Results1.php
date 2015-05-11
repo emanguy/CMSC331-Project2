@@ -50,10 +50,11 @@ h3 {
 #
 #####################################################################
 
-print("<form action='Results2.php' method='post' name='SendApptType'>");
 
 include("headHTML.php");
 include("Utilities.php");
+
+print("<form action='Results2.php' method='post' name='SendApptType'>");
 
 $tfNameF = $_POST['tfNameF'];
 $tfNameL = $_POST['tfNameL'];

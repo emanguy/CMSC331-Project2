@@ -11,6 +11,12 @@ body {
 	height: 6%;
 }
 
+div.toolbar > *
+{
+    display: inline;
+    margin-left: 32px;
+}
+
 /* This CSS styles a submit button in a form to look like a link */
 input[type="submit"].submitLink
 {
@@ -31,8 +37,9 @@ input[type="submit"].submitLink
 <body>
 
 <div class="toolbar">
-    <pre>
-    <a href='./'>HOME</a>   <?php
+<a href='./'>HOME</a>
+
+<?php
      if (isset($_POST["tfId"]) && strcmp($_POST["tfId"], "") != 0)
      {
          print("<form action='ShowAppointments.php' method='POST'> <input type='hidden' name='tfId' value='".$_POST["tfId"]."'> <input class='submitLink' type='submit' value='DELETE/VIEW APPOINTMENTS'> </form>");
@@ -41,9 +48,10 @@ input[type="submit"].submitLink
      {
         print("<a href='./DeleteAppointmentBegin.php'>DELETE/VIEW APPOINTMENTS</a>");
      }
-     ?>   <a href='http://www.umbc.edu/advising/dept_advising.html'>ADDITIONAL SUPPORT</a>
+?>
 
-    </pre>
+<a href='http://www.umbc.edu/advising/dept_advising.html'>ADDITIONAL SUPPORT</a>
+
 </div>
 
 <img height="10%" src="http://assets1-my.umbc.edu/images/avatars/myumbc/original.png?1425393485"></img><br>
