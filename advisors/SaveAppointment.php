@@ -21,6 +21,7 @@
 		var_dump($_POST["assignedAdvisors"]);
         $advisorList = implode(", ", $_POST["assignedAdvisors"]);
         $majorList = implode(", ", $_POST["majors"]);
+        $DB = new Common(false);
 
         // Here begins the SQL
         // Update on grpID present
@@ -34,10 +35,8 @@
         else // Insert on grpID not present
         {
             // Get advisor name
-			/*This doesn't actually appear to do anything, it's never referred to or used, and it was throwing a problem with the query. either way addition and editing work fine without it.
             $query = "SELECT `Name` FROM `Advisor` WHERE `ID` = ".$_POST["advID"];
             $result = MYSQL_FETCH_ARRAY($DB->executeQuery($query, $_SERVER["SCRIPT_NAME"]));
-			*/
 
             // Check to see if appointment already exists at this time
             $query = "SELECT `ID` FROM `GroupAppointments` WHERE `Advisors` LIKE '%".$result["Name"]."%' AND `Date/Time` = '".$_POST["date"]." ".$_POST["time"]."'";
