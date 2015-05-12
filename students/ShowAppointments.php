@@ -112,7 +112,7 @@ else
                         </center>
                         <input name='eventId' type='hidden' value='".$appointment["ID"]."'>
                         <input name='isGroup' type='hidden' value='false'>
-                        <input name='studentID' type='hidden' value='".$studentID."'>
+                        <input name='tfId' type='hidden' value='".$studentID."'>
                     </form>
                 </td>
             </tr>");

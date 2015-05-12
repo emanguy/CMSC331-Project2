@@ -29,8 +29,8 @@
             <div class="centerBox">
                 <!-- Align content correctly -->
                 <h1>
-                    <!-- Input for student's user ID -->
-                    Advisor ID: <input type="text" size="12" maxLength="4" name="advID"
+                    <!-- Input for advisor's user ID -->
+                    Advisor ID: <input type="number" style="width: 10%" size="12" maxLength="4" name="advID"
                         placeholder="E.g. 1" required><br>
                 </h1>
 
