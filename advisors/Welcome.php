@@ -1,3 +1,11 @@
+<?php
+// Get advisor ID from POST
+$advisorID = $_POST["advID"];
+if (!isset($advisorID)) {
+include("index.php");
+exit();
+}
+?>
 <html>
 <head>
     <title>Advisor Control Panel </title>
