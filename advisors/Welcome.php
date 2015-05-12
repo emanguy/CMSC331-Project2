@@ -58,7 +58,7 @@
         <center>
             <form action="EventSelect.php" method="POST">
                 <input type="hidden" name="advID" value=<?php print("'".$_POST["advID"]."'"); ?>>
-                <input type="submit" value="List Templates">
+                <input type="submit" value="Modify Appointment Availability">
             </form>
             <form action="ApptDayPick.php" method="POST">
                 <input type="hidden" name="advID" value=<?php print("'".$_POST["advID"]."'"); ?>>
