@@ -22,7 +22,7 @@ include("CommonMethods.php");
 $eventId = $_POST["eventId"];
 $groupId = "";
 $isGroup = $_POST["isGroup"];
-$studentID = $_POST["studentID"];
+$studentID = $_POST["tfId"];
 
 if (isset($_POST["groupId"]))
 {
