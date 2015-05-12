@@ -48,7 +48,7 @@ h2 {
 	<br>
 	LAST NAME: <input type="text" size="12" maxlength="20" name="tfNameL" placeholder="E.g. Smith" required><br>
 	<br>
-	CAMPUS ID: <input type="text" size="12" maxlength="8" name="tfId" placeholder="E.g. AB12345" required><br>
+	CAMPUS ID: <input type="text" size="12" maxlength="8" name="tfId" placeholder="E.g. AB12345" onblur="this.value=this.value.toUpperCase()" required><br>
 	</font>
 </h1>
 
