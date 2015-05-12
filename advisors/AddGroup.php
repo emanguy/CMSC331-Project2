@@ -54,7 +54,7 @@
     	<font size="18" color="red" face="Tw Cen MT"><u>Create/Edit Group Appointments</u></font><br>
 		<table>
 			<td>
-				<form action="SaveGroup.php" id="saveButton" style="float: bottom, right; padding: 5px" method='post'>
+				<form action="SaveAppointment.php" id="saveButton" style="float: bottom, right; padding: 5px" method='post'>
 				<?php 
 					# if Edit, else Create
 
