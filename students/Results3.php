@@ -81,10 +81,9 @@ print("<input type='hidden' name='tfNameF' value='$tfNameF'>");
 print("<input type='hidden' name='tfNameL' value='$tfNameL'>");
 print("<input type='hidden' name='tfId' value='$tfId'>");
 
-$arr = serialize($chkbIndividual);
-print("<input type='hidden' name='chkbIndividual' value='$arr'>");
-$arr = serialize($chkbGroup);
-print("<input type='hidden' name='chkbGroup' value='$arr'>");
+
+print("<input type='hidden' name='chkbIndividual' value='$chkbIndividual'>");
+print("<input type='hidden' name='chkbGroup' value='$chkbGroup'>");
 $arr = serialize($arraySelectedAdvisors);
 print("<input type='hidden' name='arraySelectedAdvisors' value='$arr'>");
 
@@ -134,12 +133,9 @@ $printables = array(
 ?>
 <style>
 		section { padding:10px; overflow:hidden; }
-		.bordered{ border:1px solid black; padding:10px; overflow:hidden; }
+		.bordered{ border:1px solid black; overflow:hidden; }
 		section > section { float:left; }
-			.closed {background-color: #CCCCCC;}
-		.abrams { padding-left:100px; padding-bottom:20px; }
-		.arey { padding-left:100px; padding-bottom:20px; }
-		.stevens { padding-left:100px; padding-bottom:20px; }
+		.closed {background-color: #CCCCCC;}
 	</style>
 	<?php
 
@@ -172,7 +168,7 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
 	if ($chkbIndividual != NULL)
 	{
 		print("Individual Appointments<br>");
-		print("<input type='radio' name='radioindID".$advID."' value='NULL' checked>No selection<br><section>");
+		print("<input type='radio' name='radioindID".$advID."' value='' checked>No selection<br><section>");
 		$currentDate=$dateApptI[$num];
 		$UTCdate=strtotime($currentDate);
 		$dateAdd=0;
@@ -194,13 +190,13 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
 						$datetime=date("Y-m-d",$tempDate)." ".$startTimes[$count];
 						if(!apptTaken($datetime, $name, $COMMON)){
 							#name of the form variable will be of the form 'radioindID2 where 2 is the advisor ID, and the value will be the datetime of the appointment
-							print("<div class='bordered'><input type='radio' name='radioindID".$advID."' value='".$datetime."'>".$printables[$count]."</div>");}#name of the form variable will be of the form 
+							print("<div class='bordered' style='padding:10px'><input type='radio' name='radioindID".$advID."' value='".$datetime."'>".$printables[$count]."</div>");}#name of the form variable will be of the form 
 						else{
-							print("<div class='bordered' style='background-color: Red'>".$printables[$count]."</div>");#if appointment is available normally but taken
+							print("<div class='bordered' style='background-color: Red; padding:11px'>".$printables[$count]."</div>");#if appointment is available normally but taken
 						}
 					}
 					else{
-						print("<div class='bordered' style='background-color: #CCCCCC'>".$printables[$count]."</div>");}#if appointment isn't available on schedule
+						print("<div class='bordered' style='background-color: #CCCCCC;padding:11px'>".$printables[$count]."</div>");}#if appointment isn't available on schedule
 					$count++;
 				}
 				
@@ -221,7 +217,7 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
 	if ($chkbGroup != NULL)
 	{ 
 		print("Group Appointments<br>");
-		print("<input type='radio' name='radiogrpID".$advID."' value='NULL' checked>No selection<br>");
+		print("<input type='radio' name='radiogrpID".$advID."' value='' checked>No selection<br>");
 		$sql = "select * from `GroupAppointments` where `Advisors` LIKE '%".$name."%' and `Signups` NOT LIKE '%".$tfNameF." ".$tfNameL."%'";
 		$rs = $COMMON-> executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 		while($row = mysql_fetch_array($rs))
@@ -292,10 +288,6 @@ function checkAvail($date, $time, $advisor, $advID, $COMMON)
 		}
 	return $available;
 }
-function checkGroupFull()
-{
-	
-}
 function apptTaken($when, $advisor, $COMMON)
 {
 	$taken=false;
@@ -305,5 +297,4 @@ function apptTaken($when, $advisor, $COMMON)
 	{$taken=true;}
 	return $taken;
 }
-
 ?>
