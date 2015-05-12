@@ -218,25 +218,32 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
 	{ 
 		print("Group Appointments<br>");
 		print("<input type='radio' name='radiogrpID".$advID."' value='' checked>No selection<br>");
-		$sql = "select * from `GroupAppointments` where `Advisors` LIKE '%".$name."%' and `Signups` NOT LIKE '%".$tfNameF." ".$tfNameL."%'";
+		$sql = "select * from `GroupAppointments` where `Advisors` LIKE '%".$name."%'";
 		$rs = $COMMON-> executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 		while($row = mysql_fetch_array($rs))
 		{
+			
 			$max=$row['Capacity'];
 			$datetime=$row['Date/Time'];
-			$printdate=date("l, F jS, g:iA",strtotime($datetime));
-			
-			$students=$row['Signups'];
-			$numstudents=0;
-			if($students!=NULL){
-			$numstudents=substr_count($students, ",")+1;
-			}
-			if($numstudents>=$max)
-			{print("FULL - ".$printdate."<br>");}
-			else
+			$groupID=$row['ID'];
+			$sqlcheck = "select * from `Appointment` where `AppointmentID` = '$groupID' and `Student ID` ='$tfId'";
+			$rscheck = $COMMON-> executeQuery($sqlcheck, $_SERVER["SCRIPT_NAME"]);
+			if(!($row2 = mysql_fetch_array($rscheck)))
 			{
-				print("<input type='radio' name='radiogrpID".$advID."' value='".$datetime."'>");
-				print(($max-$numstudents)." seats left - ".$printdate."<br>");
+				$printdate=date("l, F jS, g:iA",strtotime($datetime));
+				
+				$students=$row['Signups'];
+				$numstudents=0;
+				if($students!=NULL){
+				$numstudents=substr_count($students, ",")+1;
+				}
+				if($numstudents>=$max)
+				{print("FULL - ".$printdate."<br>");}
+				else
+				{
+					print("<input type='radio' name='radiogrpID".$advID."' value='".$datetime."'>");
+					print(($max-$numstudents)." seats left - ".$printdate."<br>");
+				}
 			}
 		}
 		
