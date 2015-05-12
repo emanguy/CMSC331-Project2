@@ -46,7 +46,7 @@
         <h1>
             <!-- Input for student's user ID -->
             CAMPUS ID: <input type="text" size="12" maxLength="8" name="tfId"
-                placeholder="E.g. AB12345" required><br>
+                placeholder="E.g. AB12345" onblur="this.value=this.value.toUpperCase()" required><br>
         </h1>
 
         <!-- Submit button -->

@@ -105,12 +105,29 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
 	
 	if ($chkbIndividual != NULL and $indAppt != NULL)
 	{
-		
-		
+		$sqlcheck = "select * from `Appointment` where `isGroup` = '0' and `Student ID`='$tfId' and `Advisor Name` = '$name'";
+		$rscheck = $COMMON-> executeQuery($sqlcheck, $_SERVER["SCRIPT_NAME"]);
+		$flagged=false;
+		while($row = mysql_fetch_array($rscheck))
+		{
+			$thetime=strtotime($row['Time']);
+			$base=strtotime($indAppt);
+			$week=60*60*24*7;
+			if ((($base+$week)>$thetime) or (($base-$week)<$thetime))
+			{
+				$flagged=true;
+			}
+		}
+		if(!$flagged)
+		{
 		$sqladd = "INSERT INTO `Appointment`(`AppointmentID`, `Student ID`, `Student Name`, `Advisor Name`, `IsGroup`, `Time`) VALUES ('0','$tfId','$studentName','$name','0','$indAppt')";
 		$rsadd = $COMMON-> executeQuery($sqladd, $_SERVER["SCRIPT_NAME"]);
 		print("Appointment made on ".date("D, m/d, g:iA",strtotime($indAppt))." with ".$name.".<br>");
-	
+		}
+		else
+		{
+			print("The time slot on ".date("D, m/d, g:iA",strtotime($indAppt))." is within a week of another appointment you have with ".$name.".<br>");
+		}
 	}
 	if ($chkbGroup != NULL and $grpAppt != NULL)
 	{
