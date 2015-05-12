@@ -6,7 +6,6 @@
 	$COMMON = new Common($debug); // common methods
 
     $advisorID = $_POST["advID"];
-    print($advisorID);
     $templateID = $_POST["tempID"];
     $strName = $_POST["strName"];
     $arrTimes = $_POST["timeChkb"];
