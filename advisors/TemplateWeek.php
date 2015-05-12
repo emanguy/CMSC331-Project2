@@ -168,7 +168,9 @@ else{
 			<input type="hidden" name="advName" value=<?php print("'".$name."'"); ?>>
 			<input type="hidden" name="hasdefault" value=<?php print("'".$hasdefault."'"); ?>>
 			<br><input type="submit" value="Submit">
-		</form>
+		</form><br>
+		<?php if($_POST['updated']){print("<b>Your Weekly Template has been updated!</b>");}?>
+		
 	</center>
 </body>
 </html>

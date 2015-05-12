@@ -26,6 +26,7 @@ else{
 		$sqladd = "UPDATE `DefaultTemplates` SET `Mon` = '$mon', `Tue` = '$tues', `Wed` = '$wed', `Thu` = '$thurs', `Fri` = '$fri' WHERE `AdvisorID`='$advID'";
 		$rsadd = $COMMON-> executeQuery($sqladd, $_SERVER["SCRIPT_NAME"]);
 	}
+	$_POST['updated']=true;
 	include('TemplateWeek.php');
 }
 	?>
