@@ -169,7 +169,7 @@ else{
 			<input type="hidden" name="hasdefault" value=<?php print("'".$hasdefault."'"); ?>>
 			<br><input type="submit" value="Submit">
 		</form><br>
-		<?php if($_POST['updated']){print("<b>Your Weekly Template has been updated!</b>");}?>
+		<?php if($_POST['updated']){print("<br><br><b>Your Weekly Template has been updated!</b>");}?>
 		
 	</center>
 </body>
