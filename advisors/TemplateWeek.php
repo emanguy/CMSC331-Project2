@@ -1,6 +1,13 @@
+<?php if(!isset($_POST['advID']))
+{
+	include("index.php");
+	
+}
+else{
+	?>
 <html>
 <head>
-    <title>Advisor Control Panel </title>
+    <title>Weekly Templates </title>
 
     <!-- Page-specific styles -->
     <style type="text/css">
@@ -20,6 +27,8 @@
  <?php include("LinkBar.php") ?>
   <img height="10%" src="http://assets1-my.umbc.edu/images/avatars/myumbc/original.png?1425393485"></img><br>
 	<center>
+	<font size="18" color="red" face="Tw Cen MT">Weekly Template Editor<br></font>
+	
 		<?php
 			$debug = false; 
 			 if (!class_exists(Common))
@@ -163,3 +172,4 @@
 	</center>
 </body>
 </html>
+<?php }?>

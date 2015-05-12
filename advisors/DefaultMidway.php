@@ -1,6 +1,11 @@
-<html>
-<body>
+
 <?php
+if(!isset($_POST['advID']))
+{
+	include("index.php");
+	
+}
+else{
 	$debug = false; 
 	include('./CommonMethods.php');
 	$COMMON = new Common($debug); // common methods
@@ -22,7 +27,7 @@
 		$rsadd = $COMMON-> executeQuery($sqladd, $_SERVER["SCRIPT_NAME"]);
 	}
 	include('TemplateWeek.php');
+}
 	?>
-	</body>
-	</html>
+
 	
