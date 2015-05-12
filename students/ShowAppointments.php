@@ -1,5 +1,7 @@
 <?php
-    include("headHTML.php");
+    if (isset($_POST["tfId"]))
+    {
+        include("headHTML.php");
 ?>
 
 <!-- Begin CSS styles -->
@@ -175,4 +177,9 @@ else
 
 <?php
     include("tailHTML.html");
+    }
+    else
+    {
+        include("DeleteAppointmentBegin.php");
+    }
 ?>

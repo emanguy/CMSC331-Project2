@@ -1,3 +1,7 @@
+<?php
+    if (isset($_POST["tfId"]))
+    {
+?>
 <!-- The CSS styles for the page -->
 
 <style>
@@ -173,5 +177,10 @@ for (var index = 0; index < inputs.length; index++)
 <?php
 include("tailHTML.html");
 
+    }
+    else
+    {
+        include("index.php");
+    }
 ?>
 

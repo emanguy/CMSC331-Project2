@@ -1,3 +1,7 @@
+<?php
+    if (isset($_POST["tfId"]))
+    {
+?>
 <!-- The CSS styles for the page -->
 
 <style>
@@ -199,5 +203,9 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
 
 <?php
 include("tailHTML.html");
-
+    }
+    else
+    {
+        include("index.php");
+    }
 ?>

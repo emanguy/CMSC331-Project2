@@ -1,5 +1,7 @@
 <?php
-    include("headHTML.php");
+    if (isset($_POST["tfId"]))
+    {
+        include("headHTML.php");
 ?>
 
 <!-- CSS Styles -->
@@ -70,4 +72,9 @@ print("<form action='ShowAppointments.php' method='POST'>
 
 // Add tail HTML
 include("tailHTML.html");
+    }
+    else
+    {
+        include("DeleteAppointmentBegin.php");
+    }
 ?>

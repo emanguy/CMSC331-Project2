@@ -1,3 +1,7 @@
+<?php
+    if (isset($_POST["tfId"]))
+    {
+?>
 <!-- The CSS styles for the page -->
 
 <style>
@@ -129,5 +133,9 @@ print("<input type='submit' value='SELECT APPOINTMENTS'>");
 print("</div>");
 
 include("tailHTML.html");
-
+    }
+    else
+    {
+        include("index.php");
+    }
 ?>

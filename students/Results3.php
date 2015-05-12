@@ -1,3 +1,7 @@
+<?php
+    if (isset($_POST["tfId"]))
+    {
+?>
 <!-- The CSS styles for the page -->
 
 <style>
@@ -250,6 +254,11 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
 	print("</div>");
 include("tailHTML.html");
 
+    }
+    else
+    {
+        include("index.php");
+    }
 #date is UTC, time is one of the times from the array in results3
 function checkAvail($date, $time, $advisor, $advID, $COMMON)
 {
@@ -297,4 +306,5 @@ function apptTaken($when, $advisor, $COMMON)
 	{$taken=true;}
 	return $taken;
 }
+
 ?>
