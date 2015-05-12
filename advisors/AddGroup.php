@@ -98,10 +98,10 @@
 					$j = 0;
 					for ($i = 0; $i < count($allMajors); $i++) {
 						if ($allMajors[$i] == $majors[$j]) {
-							print("<input type='checkbox' name='majors[]' value=" . $majors[$i] . " checked>" . $allMajors[$i] . "<br>");		
+							print("<input type='checkbox' name='majors[]' value='" . $majors[$i] . "' checked>" . $allMajors[$i] . "<br>");		
 							$j++;		
 						} else {
-							print("<input type='checkbox' name='majors[]' value=" . $majors[$i] . ">" . $allMajors[$i] . "<br>");
+							print("<input type='checkbox' name='majors[]' value='" . $majors[$i] . "'>" . $allMajors[$i] . "<br>");
 						}
 					}
 				?>
@@ -127,16 +127,15 @@
 						}
 						$i++;
 					}
-
 					$allAdvisors = explode(", ", $allAdvisors);
-
 					$j = 0;
 					for ($i = 0; $i < count($allAdvisors); $i++) {
 						if ($allAdvisors[$i] == $arrAdvisors[$j]) {
-							print("<input type='checkbox' name='assignedAdvisors[]' value=" . $allAdvisors[$i] . " checked>" . $allAdvisors[$i] . "<br>");		
+						
+							print("<input type='checkbox' name='assignedAdvisors[]' value='" . $allAdvisors[$i] . "' checked>" . $allAdvisors[$i] . "<br>");		
 							$j++;		
 						} else {
-							print("<input type='checkbox' name='assignedAdvisors[]' value=" . $allAdvisors[$i] . ">" . $allAdvisors[$i] . "<br>");
+							print("<input type='checkbox' name='assignedAdvisors[]' value='" . $allAdvisors[$i] . "'>" . $allAdvisors[$i] . "<br>");
 						}
 					}
 				?>
