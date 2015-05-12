@@ -169,7 +169,35 @@ for($num = 0; $num < count($arraySelectedAdvisors); $num++) {
 	
 	
 }
+?>
 
+<br><br>
+<p><b>Returning to main page in <span id="timeout"></span> seconds...</b></p>
+<br>
+
+<script type="text/javascript">
+
+    // Number of seconds to page reload
+    var seconds = 10;
+
+    // Set the timer on page load
+    document.getElementById("timeout").innerHTML = seconds;
+
+    // Show countdown to index.php
+    window.setInterval(function()
+    {
+        seconds--;
+        document.getElementById("timeout").innerHTML = seconds;
+    }, 1000);
+
+    // Go back to welcome page after *seconds* seconds of inactivity
+    window.setTimeout(function()
+    {
+        window.location.href = "index.php";
+    }, seconds * 1000);
+</script>
+
+<?php
 include("tailHTML.html");
 
 ?>
