@@ -66,6 +66,7 @@
             </form>
             <form action="TemplateWeek.php" method="POST">
                 <input type="hidden" name="advID" value=<?php print("'".$_POST["advID"]."'"); ?>>
+				<input type="hidden" name="advName" value=<?php print("'".$advisorName["Name"]."'"); ?>>
                 <input type="submit" value="Set Default Templates">
             </form>
         </center>
