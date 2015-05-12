@@ -41,7 +41,7 @@
 
 			print("<form action='EventSelect.php' method='post'>");
 				print("<input type='hidden' value='$advID' name='advID'>");
-	           	print("<input type='submit' value='RETURN'>");
+	           		print("<input type='submit' value='RETURN'>");
 			print("</form>");
 				
 		}

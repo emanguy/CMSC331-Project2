@@ -22,6 +22,13 @@
 		13 => "02:30 PM",
 		14 => "03:00 PM", 
 		15 => "03:30 PM");
+
+
+	$advID = $_POST["advID"];
+	if (!isset($advID)) {
+		include("index.php");
+		exit();
+	}
 ?>
 
 <link rel="stylesheet" type="text/css" href="TableStyle.css">
@@ -70,8 +77,12 @@
 
 			<?php
 
+			$sql = "SELECT * FROM `Advisor` WHERE `ID` = $advID";
+			$rs = $COMMON-> executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+			$row = mysql_fetch_array($rs);
+			$advName = $row['Name'];
 	
-			$sql = "SELECT * FROM `Templates` WHERE `IsTemporary` = 0";
+			$sql = "SELECT * FROM `Templates` WHERE (`IsTemporary` = '0' AND `Advisor` = '$advName') OR `Default` = '1'";
 			$rs = $COMMON-> executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
 			while ($row = mysql_fetch_array($rs)) 
@@ -138,7 +149,7 @@
 
 		<?php
 
-			$sql = "SELECT * FROM `GroupAppointments` WHERE `Advisors` LIKE '%". $advID . "%'";
+			$sql = "SELECT * FROM `GroupAppointments` WHERE `Advisors` LIKE '%". $advName . "%'";
 			$rs = $COMMON-> executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 	
 			while($row = mysql_fetch_array($rs)) {
@@ -193,7 +204,7 @@
 
 		<?php
 
-			$sql = "SELECT * FROM `Templates` WHERE `IsTemporary` = 1";
+			$sql = "SELECT * FROM `Templates` WHERE `IsTemporary` = '1' AND `Advisor` = '$advName'";
 			$rs = $COMMON-> executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 	
 			while ($row = mysql_fetch_array($rs)) 

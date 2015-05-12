@@ -69,9 +69,9 @@
 					}	
 				?>
 
-				Name: <input type="text" name="strName" value="<?php print($row['Name']) ?>" > <br>
+				Name: <input type="text" name="strName" value="<?php print($row['Name']) ?>" required> <br>
 				<input type="checkbox" name="boolIsTemp" <?php if ($row['IsTemporary'] == "1") print("checked") ?>> Is Temporary?&nbsp&nbsp&nbsp&nbsp 
-				Applies to: <input type="date" name="date" value="<?php print($row['Date']) ?>" > <br><br><br>
+				Applies to: <input type="date" name="date" value="<?php print($row['Date']) ?>" required> <br><br><br>
 				<b> Start Times:</b> <br>
 				<?php 
 					$j = 0;
@@ -94,6 +94,7 @@
 					?>
 				</form>
 				<form action="EventSelect.php" id="cancelButton" style="padding: 5px">
+					<input type='hidden' value='$advisorID' name='advID'>
 					<input type="submit" value="Cancel">
 				</form>
 			</td>

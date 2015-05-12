@@ -6,6 +6,7 @@
 	$COMMON = new Common($debug); // common methods
 
     $advisorID = $_POST["advID"];
+    print($advisorID);
     $templateID = $_POST["tempID"];
     $strName = $_POST["strName"];
     $arrTimes = $_POST["timeChkb"];
@@ -64,7 +65,7 @@
 
 				print("<center><font size='5' style='float:center'>Your '" . $strName . "' template has been successfully edited.");
 				print("<form action='EventSelect.php' method='post'>");
-					print("<input type='hidden' value='$advID' name='advID'>");
+					print("<input type='hidden' value='$advisorID' name='advID'>");
 	           		print("<input type='submit' value='RETURN'>");
 				print("</form>");
 			}
@@ -82,7 +83,7 @@
 			
 			print("<center><font size='5'>Your template has been successfully created.");
 			print("<form action='EventSelect.php' method='post'>");
-				print("<input type='hidden' value='$advID' name='advID'>");
+				print("<input type='hidden' value='$advisorID' name='advID'>");
 	           	print("<input type='submit' value='RETURN'>");
 			print("</form>");
 		}

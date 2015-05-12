@@ -1,11 +1,12 @@
 <?php
-// Get advisor ID from POST
-$advisorID = $_POST["advID"];
-if (!isset($advisorID)) {
-include("index.php");
-exit();
-}
+	// Get advisor ID from POST
+	$advisorID = $_POST["advID"];
+	if ($advisorID == NULL || !isset($advisorID)) {
+		include("index.php");
+		exit();
+	}
 ?>
+
 <html>
 <head>
     <title>Advisor Control Panel </title>
@@ -31,9 +32,6 @@ exit();
     <center>
         <font size="18" color="red" face="Tw Cen MT">Welcome, 
         <?php
-                    // Get advisor ID from POST
-                    $advisorID = $_POST["advID"];
-
                     /*
                      * This statement fixes an issue with my implementation on advisor validation.
                      * When AttemptLogin.php includes this file, common already

@@ -130,12 +130,17 @@
 					$allAdvisors = explode(", ", $allAdvisors);
 					$j = 0;
 					for ($i = 0; $i < count($allAdvisors); $i++) {
-						if ($allAdvisors[$i] == $arrAdvisors[$j]) {
+						if (isset($groupID)) {
+							if ($allAdvisors[$i] == $arrAdvisors[$j]) {
 						
-							print("<input type='checkbox' name='assignedAdvisors[]' value='" . $allAdvisors[$i] . "' checked>" . $allAdvisors[$i] . "<br>");		
-							$j++;		
+								print("<input type='checkbox' name='assignedAdvisors[]' value='" . $allAdvisors[$i] . "' checked>" . $allAdvisors[$i] . "<br>");		
+								$j++;		
+							} else {
+								print("<input type='checkbox' name='assignedAdvisors[]' value='" . $allAdvisors[$i] . "'>" . $allAdvisors[$i] . "<br>");
+							}
 						} else {
-							print("<input type='checkbox' name='assignedAdvisors[]' value='" . $allAdvisors[$i] . "'>" . $allAdvisors[$i] . "<br>");
+							print("<input type='checkbox' name='assignedAdvisors[]' value='" . $allAdvisors[$i] . "'checked>" . $allAdvisors[$i] . "<br>");
+					
 						}
 					}
 				?>
@@ -147,7 +152,7 @@
 					?>
 				</form>
 				<form action="EventSelect.php" id="cancelButton" style="padding: 5px">
-					<input type='hidden' value='$advisorID' name='advID'>
+					<input type='hidden' value='$advisorID' name='advisorID'>
 					<input type="submit" value="Cancel">
 				</form>
 			</td>
