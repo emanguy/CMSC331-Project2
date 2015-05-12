@@ -18,7 +18,6 @@
 
 <?php
         include("CommonMethods.php");
-		var_dump($_POST["assignedAdvisors"]);
         $advisorList = implode(", ", $_POST["assignedAdvisors"]);
         $majorList = implode(", ", $_POST["majors"]);
         $DB = new Common(false);

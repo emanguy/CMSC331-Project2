@@ -15,7 +15,7 @@
 
 	<?php
 		$advID = $_POST["advID"];
-		$grpID = $_POST["groupID"];	
+		$grpID = $_POST["grpID"];	
 		$tempID = $_POST["tempID"];		
 
 		if (($grpID != NULL && $tempID != NULL) || ($grpID == NULL && $tempID == NULL)) {
@@ -47,3 +47,4 @@
 		}
 	?>
 </body>
+</html>
